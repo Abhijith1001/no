@@ -1,0 +1,65 @@
+<%- include("partials/header") %>
+
+
+
+
+
+    <div class="container1">
+        <div class="fixed">
+
+
+            <div class="sidebar d-none d-md-block ">
+                <p class="name">𝓑𝓵𝓸𝓰 𝓐𝓹𝓹</p>
+
+                <a href="/" class="active">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/addpost">
+                    <i class="fas fa-info-circle"></i>
+                    Add Post
+                </a>
+                <a href="/contact">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="scrollable">
+            <main class="flex-shrink-0 m">
+                <div class="container main-content">
+                    <% Posts.forEach(post=>{ %>
+                        <div class="posts">
+                            <h1 class="mt-5 content-title">
+                                <%= post.Title %>
+                                <button type="submit" class="btn">
+                                    <a href="/posts/edit/<%= post._id %>"> <i class="fa fa-edit"></i> </a>
+                                </button>
+                                <button type="submit" class="btn">
+                                    <a href="/posts/delete/<%= post._id %>"> <i class="fa fa-trash"></i> </a>
+                                </button>
+                            </h1>
+                            <p class="lead content-data">
+                                Posted in <code class="small"> <%= post.Category %> </code>
+                                on <code class="small"> <%= Time %> </code>.</p>
+                            <p id="text" class=" content-text">
+                                <%= post.Body.substring(0,350)+"..." %> <br><br>
+                                <a href="/posts/<%= post._id %>">
+                                    <button type="button" class="btn btn-outline-primary">Read More</button>
+                                </a>
+                            </p><hr>
+                        </div>
+                    <% }) %>
+                    
+                    
+                </div>
+            </main>
+        </div>
+
+
+    </div>
+
+    <%- include("partials/footer") %>

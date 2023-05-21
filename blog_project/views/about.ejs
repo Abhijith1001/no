@@ -1,0 +1,74 @@
+<%- include("partials/header") %>
+
+    <div class="sidebar d-none d-md-block ">
+        <p class="name">𝓑𝓵𝓸𝓰 𝓐𝓹𝓹</p>
+
+        <a href="/">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="/addpost">
+            <i class="fas fa-info-circle"></i>
+            Add Post
+        </a>
+        <a href="/contact">
+            <i class="fas fa-envelope"></i>
+            Contact
+        </a>
+    </div>
+
+    <main class="flex-shrink-0">
+        <div class="container">
+
+            <div class="instagram-post">
+                <h1 class="post-title">
+                    <%= Title %>
+                </h1>
+                <div class="post-meta">
+                    <span class="post-category">
+                        <code class="post-category-text fw-bold">
+                            <%= Category %>
+                        </code>
+                    </span>
+                    <span class="post-time">
+                        <code class="post-time-text fw-bold">
+                            <%= Time %>
+                        </code>
+                    </span>
+                </div>
+                <p class="post-body">
+                    <%= Body %>
+                </p>
+                <div class="instagram-buttons">
+
+                    <a href="/posts/delete/<%= post._id %> " class="instagram-button-text des"> <button type="button"
+                            class="btn btn-danger">Destroy</button></a>
+    
+    
+                    <a href="/posts/edit/<%= post._id %>" class="instagram-button-text des"><button type="button"
+                            class="btn btn-primary">Edit</button></a>
+    
+                </div>
+            </div>
+            <br>
+
+            <%- include("Comment") %>
+<br>
+                <div class="comments">
+                    <% comments.forEach(function(comment) { %>
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="comment-title font-weight-bold">TITLE: <%= comment.CTitle %></span>
+                            </div>
+                            <div class="comment-body">
+                                <p>COMMENT: <%= comment.Comment %>
+                                </p>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+
+        </div>
+
+
+    </main>

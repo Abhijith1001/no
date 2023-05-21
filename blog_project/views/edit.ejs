@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+
+<div class="sidebar d-none d-md-block ">
+                <p class="name">𝓑𝓵𝓸𝓰 𝓐𝓹𝓹</p>
+
+                <a href="/">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/addpost">
+                    <i class="fas fa-info-circle"></i>
+                    Add Post
+                </a>
+                <a href="#contact">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </div><br><br><br><br>
+            
+            <form action="/posts/edit/<%= post._id %>" method="post" id="frm"><br><br>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Title</label><br>
+                    <input type="text" name="Title" class="form-control" id="exampleFormControlInput1" value="<%= post.Title %>">
+                </div><br>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Category</label><br>
+                    <input type="text" name="Category" class="form-control" id="exampleFormControlInput1" value="<%= post.Category %>">
+                </div><br>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Body</label><br>
+                    <textarea class="form-control" name="Body" id="exampleFormControlTextarea1" rows="4"><%= post.Body %></textarea>
+                </div><br>
+                <button type="submit" name="submit" class="btn btn-primary">Update</button>
+            </form>
+    <%- include("partials/footer") %>

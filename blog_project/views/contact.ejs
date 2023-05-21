@@ -1,0 +1,40 @@
+<%- include("partials/header") %>
+
+<div class="sidebar d-none d-md-block ">
+    <p class="name">𝓑𝓵𝓸𝓰 𝓐𝓹𝓹</p>
+
+    <a href="/" >
+        <i class="fas fa-home"></i>
+        Home
+    </a>
+    <a href="/addpost">
+        <i class="fas fa-info-circle"></i>
+        Add Post
+    </a>
+    <a href="/contact" class="active">
+        <i class="fas fa-envelope"></i>
+        Contact
+    </a>
+</div>
+
+<br><br><br><br>
+ 
+    <form action="" method="post" id="frm"><br><br>
+        <h1><%= contact %></h1>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Name</label><br>
+            <input type="text" name="Title" class="form-control" id="exampleFormControlInput1">
+        </div><br>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Email</label><br>
+            <input type="text" name="Category" class="form-control" id="exampleFormControlInput1">
+        </div><br>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Message</label><br>
+            <textarea class="form-control" name="Body" id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div><br>
+        <button type="submit" name="submit" class="btn btn-primary">Send</button>
+    </form>
+
+
+<%- include("partials/footer") %>

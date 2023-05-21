@@ -1,0 +1,141 @@
+<form id="checkout-form" method="post">
+  <label for="address">Address:</label>
+  <input type="text" id="address" name="address"><br>
+
+  <label for="pincode">Pincode:</label>
+  <input type="text" id="pincode" name="pincode"><br>
+
+  <label for="mobile">Mobile:</label>
+  <input type="text" id="mobile" name="mobile"><br>
+  <input type="hidden" name="userId" id="" value="{{user._id }}" hidden>
+
+  <label for="payment-method">Payment method:</label>
+  <input type="radio" id="payment-cod" name="payment-method" value="cod">
+  <label for="payment-cod">COD</label>
+  <input type="radio" id="payment-online" name="payment-method" value="online">
+  <label for="payment-online">Online payment</label><br>
+
+  <button type="submit" class="btn btn-primary">Checkout</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+ $(function () {
+  $('#checkout-form').on('submit', function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/place-order',
+      type: 'POST',
+      data: $('#checkout-form').serialize(),
+      success: function (response) {
+        alert(response);
+        if (response.codSuccess) {
+          // Update the URL to match the correct route
+          location.href = '/order-success';
+        } else {
+          razorpayPayment(response)
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.error(textStatus, errorThrown);
+      },
+    });
+  });
+});
+
+function razorpayPayment(order) {
+  var options = {
+    "key": "rzp_test_BSQUeNGcW3SxXt", // Enter the Key ID generated from the Dashboard
+    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Iron Iddict",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response) {
+      verifyPayment(response, order);
+    },
+    "prefill": {
+      "name": "Gaurav Kumar",
+      "email": "gaurav.kumar@example.com",
+      "contact": "9000090000"
+    },
+    "notes": {
+      "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+      "color": "#3399cc"
+    }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.open();
+}
+
+function verifyPayment(payment, order) {
+  $.ajax({
+    url: '/verify-payment',
+    data: {
+      payment: payment,
+      order: order
+    },
+    method: 'post',
+    success: function (response) {
+      if (response.status === true) {
+        location.href = '/order-success';
+      } else {
+        alert('payment-failed');
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.error(textStatus, errorThrown);
+    }
+  });
+}
+
+
+
+</script>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #2874f0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .btn:hover {
+    background-color: #1c5bbf;
+  }
+</style>

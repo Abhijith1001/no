@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+</head>
+<!-- Add a little bit of CSS to make the sidebar look good -->
+<style>
+    .sidebar {
+        height: 100%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidebar a {
+        color: white;
+        padding: 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .sidebar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .active {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<body>
+    <!-- The sidebar -->
+    <div class="sidebar d-none d-md-block">
+        <a href="#home" class="active">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="#about">
+            <i class="fas fa-info-circle"></i>
+            About
+        </a>
+        <a href="#services">
+            <i class="fas fa-cog"></i>
+            Services
+        </a>
+        <a href="#clients">
+            <i class="fas fa-users"></i>
+            Clients
+        </a>
+        <a href="#contact">
+            <i class="fas fa-envelope"></i>
+            Contact
+        </a>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<%- include("partials/header") %>
+<br><br><br>
+    <div class="sidebar d-none d-md-block ">
+        <p class="name">𝓑𝓵𝓸𝓰 𝓐𝓹𝓹</p>
+
+        <a href="/" >
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+        <a href="/addpost" class="active">
+            <i class="fas fa-info-circle"></i>
+            Add Post
+        </a>
+        <a href="/contact">
+            <i class="fas fa-envelope"></i>
+            Contact
+        </a>
+    </div>
+
+    <form action="/addpost" method="post" id="frm"><br><br>
+        <h1> <b>
+                <%= Add %>
+            </b></h1>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Title</label><br>
+            <input type="text" name="Title" class="form-control" id="exampleFormControlInput1">
+        </div><br>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Category</label><br>
+            <input type="text" name="Category" class="form-control" id="exampleFormControlInput1">
+        </div><br>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Body</label><br>
+            <textarea class="form-control" name="Body" id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div><br>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Thumbnail Image</label><br>
+            <input type="file" name="Image" class="form-control" id="exampleFormControlInput1">
+        </div><br>
+        <button type="submit" name="submit" class="btn btn-primary">Publish</button>
+    </form>
+
+    <%- include("partials/footer") %>
